@@ -51,6 +51,10 @@
         integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <script src="./util.js"></script>
     <script type="text/javascript">
+        Number.prototype.round = function (precision) {
+            const num = Math.round((this.valueOf() + Number.EPSILON) * Math.pow(10, precision)) / Math.pow(10, precision);
+            return num.toFixed(precision);
+        }
 
         const video = {
             el: null, isPlaying: false, updateCurrentTime: null,
@@ -155,7 +159,6 @@
 
             $('body').on('keydown', (event) => output.record(event, 'start'));
             $('body').on('keyup', (event) => output.record(event, 'end'));
-
         });
 
         function loadVideo(event) {
@@ -175,14 +178,6 @@
             output.updateCurrentLine();
 
         }
-
-      //   function chooseFile() {
-      //     console.log("choose");
-      //     $.when(eel.choose_file()()).done((path) => {
-      //       $("source").attr("src", path.replace("C:/", "../../../../../"));
-      //       $("video")[0].load();
-      //     });
-      //   }
     </script>
 </body>
 
