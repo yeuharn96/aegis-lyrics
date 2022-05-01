@@ -1,3 +1,3 @@
 import eel
-eel.init('asset')
+eel.init('./')
 eel.start('index.html', port=15000)
